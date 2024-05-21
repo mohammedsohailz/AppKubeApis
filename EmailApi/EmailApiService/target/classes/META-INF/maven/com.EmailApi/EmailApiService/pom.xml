@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.EmailApi</groupId>
+    <artifactId>EmailApi</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>EmailApiService</artifactId>
+  <build>
+        <plugins>
+            <plugin> <!--https://openapi-generator.tech/docs/plugins/-->
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>5.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <id>buildApi</id>
+                        <configuration>
+                            <inputSpec>C:\Users\Mohammed.Sohail\Documents\workspace-spring-tool-suite-4-4.22.1.RELEASE\EmailApi\Application\Email.yaml</inputSpec>
+                            <!--https://openapi-generator.tech/docs/generators/spring -->
+                            <generatorName>spring</generatorName>
+                            <library>spring-boot</library>
+ 
+<!--                            <modelNameSuffix>${swagger.modelNameSuffix}</modelNameSuffix>-->
+<!--                            <modelNameSuffix>DTO</modelNameSuffix>-->
+                            <generateApis>true</generateApis>
+                            <generateApiTests>false</generateApiTests>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateModels>true</generateModels>
+                            <generateModelTests>false</generateModelTests>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+ 
+                            <environmentVariables>
+                                <supportingFiles>
+                                    ApiUtil.java
+                                </supportingFiles>
+                            </environmentVariables>
+ 
+                            <!-- pass any necessary config options -->
+                            <configOptions>
+                                <interfaceOnly>true</interfaceOnly>∂
+                                <useBeanValidation>true</useBeanValidation>
+                                <performBeanValidation>true</performBeanValidation>
+<!--                                <modelPackage>${swagger.modelPackage}</modelPackage>-->
+                                <modelPackage>com.org.asset.api.model</modelPackage>
+<!--                                <apiPackage>${swagger.basePackage}.controller</apiPackage>-->
+                                <apiPackage>com.org.asset.api.controller</apiPackage>
+                                <sourceFolder>/src/main/java</sourceFolder>
+                                <implFolder>/src/main/java</implFolder>
+                                <serializableModel>true</serializableModel>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifest>
+                            <addClasspath>false</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Build-Number>${buildNumber}</Build-Number>
+                            <Build-Time>${maven.build.timestamp}</Build-Time>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

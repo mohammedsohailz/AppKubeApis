@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Implementation-Title: EmailApiService
+Implementation-Version: 0.0.1-SNAPSHOT
+Build-Number: 
+Build-Time: 2024-05-15T09:09:44Z
+Created-By: Maven Integration for Eclipse
+

@@ -1,0 +1,4 @@
+com\org\asset\api\controller\ApiUtil.class
+com\org\asset\api\model\Organization.class
+com\org\asset\api\model\EmailQueue.class
+com\org\asset\api\controller\EmailApi.class

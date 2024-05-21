@@ -1,0 +1,115 @@
+openapi: 3.0.1
+info:
+  title: Email API
+  description: A comprehensive API for managing various types of emails within the system.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8088
+paths:
+  /email/send-new-user-registration-mail:
+    get:
+      tags:
+        - Email
+      summary: Sends a new user registration email.
+      description: |
+        This endpoint triggers the sending of a new user registration email. It is designed to be called periodically (e.g., every minute) to ensure that all eligible users receive their registration emails promptly.
+      operationId: sendNewUserRegistrationMail
+      responses:
+        '200':
+          description: The request was successful, and the user's registration email has been sent.
+          content:
+            text/plain:
+              schema:
+                type: string
+  /email/send-new-org-user-registration-mail:
+    get:
+      tags:
+        - Email
+      summary: Sends a new organization user registration email.
+      description: |
+        This endpoint triggers the sending of a new organization user registration email. Similar to the user registration email, this endpoint is also designed to be called periodically to ensure timely delivery of registration emails to organization users.
+      operationId: sendNewOrgUserRegistrationMail
+      responses:
+        '200':
+          description: The request was successful, and the new organization user's registration email has been sent.
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    EmailQueue:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        status:
+          type: string
+          nullable: true
+          description: Current status of the email processing queue.
+        mailType:
+          type: string
+          nullable: true
+          description: Type of email being processed (e.g., user registration, password reset).
+        mailFrom:
+          type: string
+          nullable: true
+          description: The sender's email address.
+        mailTo:
+          type: string
+          nullable: true
+          description: The recipient's email address.
+        mailSubject:
+          type: string
+          nullable: true
+          description: Subject line of the email.
+        mailBody:
+          type: string
+          nullable: true
+          description: Body content of the email.
+        mailTemplate:
+          type: string
+          nullable: true
+          description: Template used for generating the email body.
+        userName:
+          type: string
+          nullable: true
+          description: Name of the user associated with the email.
+        organization:
+          $ref: '#/components/schemas/Organization'
+    Organization:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        fax:
+          type: string
+        dateOfEstablishment:
+          type: string
+          format: date-time
+        status:
+          type: string
+        cmdbOrgId:
+          type: integer
+          format: int64
+        fileName:
+          type: string
+        fileStorageLocationType:
+          type: string
+        profileImage:
+          type: string
+tags:
+  - name: Email
+    description: Contains endpoints for handling email-related operations such as sending user and organization registration emails.

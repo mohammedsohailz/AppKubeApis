@@ -1,0 +1,4 @@
+src/main/java/com/org/asset/api/controller/ApiUtil.java
+src/main/java/com/org/asset/api/controller/EmailApi.java
+src/main/java/com/org/asset/api/model/EmailQueue.java
+src/main/java/com/org/asset/api/model/Organization.java
